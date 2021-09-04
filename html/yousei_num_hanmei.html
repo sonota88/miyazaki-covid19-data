@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>宮崎県 コロナ関連データ＞陽性者数（判明日ベース）</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"
+            integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    ></script>
+    <script src="../data_js/count_sum.js"></script>
+  </head>
+  <body>
+    <h1>陽性者数（判明日ベース）</h1>
+
+    <canvas id="chart" width="400" height="400"></canvas>
+
+    <script>
+const _data = DATA["yousei_num_hanmei"];
+const data   = _data.map(it => it["小計"]);
+const labels = _data.map(it => it["日付"]);
+
+const ctx = document.getElementById('chart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels,
+        datasets: [{
+            label: '陽性者数（判明日ベース）',
+            data,
+            backgroundColor: [
+                'rgba(127, 127, 127, 0.5)',
+            ],
+            borderColor: [
+                'rgba(127, 127, 127, 1)',
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+    </script>
+  </body>
+</html>
