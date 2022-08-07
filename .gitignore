@@ -1,2 +1,6 @@
 /tmp/
 /cache/
+
+# Bundler
+/.bundle/
+/vendor/bundle/
