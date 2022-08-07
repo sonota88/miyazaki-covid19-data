@@ -1,5 +1,3 @@
-console
-
 window.DATA = window.DATA || {};
 window.DATA["yousei_num_hanmei"] =
 [
