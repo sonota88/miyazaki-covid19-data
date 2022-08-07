@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>宮崎県 コロナ関連データ＞陽性者数（判明日ベース）</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.4.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+
+    <script src="../data_js/count_sum.js"></script>
+  </head>
+  <body>
+    <h1>陽性者数（判明日ベース）</h1>
+
+    <div
+      id="vis"
+      style="
+          width: 90vw;
+          height: 80vh;
+          "
+    ></div>
+
+    <script>
+const data = DATA["yousei_num_hanmei"];
+
+const vlSpec = {
+  $schema: 'https://vega.github.io/schema/vega-lite/v5.json',
+  width: 'container',
+  height: 'container',
+  config: {},
+  data: {
+    values: data
+  },
+  mark: 'bar',
+  encoding: {
+    x: {
+      field: '日付',
+      type: 'temporal',
+      axis: {
+        labelAngle: 90
+      }
+    },
+    y: {
+      field: '小計',
+      type: 'quantitative',
+      axis: {
+        title: '陽性者数（判明日ベース）'
+      }
+    }
+  }
+};
+
+vegaEmbed('#vis', vlSpec);
+    </script>
+  </body>
+</html>
